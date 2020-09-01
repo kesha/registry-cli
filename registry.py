@@ -636,7 +636,7 @@ def delete_tags_by_age(registry, image_name, dry_run, hours, tags_to_keep):
     image_tags = registry.list_tags(image_name)
     tags_to_delete = []
     print('---------------------------------')
-    for tag in image_tags:
+    for tag in (image_tags or []):
         image_config = registry.get_tag_config(image_name, tag)
 
         if image_config == []:
